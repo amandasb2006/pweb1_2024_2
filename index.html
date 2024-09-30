@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Seja bem vindo!</h1>
-   <img src="https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png" 
-        title="cachorro" width="500" height="315"/> 
+    <script>
+      function mostrar() {
+        /// alert("teste");
+        var conteudo = document.getElementById("conteudo");
+        conteudo.innerHTML = "Texto Diferente";
+        conteudo.style.color = "blue";
+        conteudo.style.backgroundColor = "yellow";
+      }
 
-    <video width="500" height="350" controls>
-        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-</body>
+      function voltarCor() {
+        var conteudo = document.getElementById("conteudo");
+        conteudo.style.color = "";
+        conteudo.style.backgroundColor = "";
+      }
+      function mudarCor() {
+        var conteudo = document.getElementById("conteudo");
+        conteudo.style.color = "blue";
+        conteudo.style.backgroundColor = "purple";
+      }
+      function animacao() {
+        var anima = document.getElementById("animacao");
+        anima.classList.toggle("fade");
+      }
+    </script>
+    <style>
+      #animacao {
+        opacity: 1;
+        transition: opacity 1s;
+      }
+
+      #animacao.fade {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Comentário teste 2 -->
+    <h1>Exemplo JavaScript</h1>
+    <p id="conteudo" onmouseover="mudarCor()" onmouseout="voltarCor()">
+      Texto qualquer Aqui!
+    </p>
+    <button onclick="mostrar()">Clique aqui</button>
+
+    <p id="animacao">Texto Animação</p>
+    <button onclick="animacao()">Clique aqui</button>
+  </body>
 </html>
