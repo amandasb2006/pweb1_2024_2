@@ -49,8 +49,7 @@
 
     <label for="">Status</label> <br>
     <select name="status">
-        
-        <option valuen="SIM">SIM</option>
+        <option <?php $data->status =="SIM" ? "selected":""?>value="SIM">SIM</option>
         <option valuen="NÃO">NÂO</option>
     </select>
     <br>
