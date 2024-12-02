@@ -22,7 +22,7 @@
     }
 
     if(!empty($_GET['id'])){
-        $data = $db->find($_GET['id']);
+        $data = $db->find('post',$_GET['id']);
         //var_dump($data);
         //exit;
     }
@@ -49,8 +49,9 @@
 
     <label for="">Status</label> <br>
     <select name="status">
-        <option valuen="<?php echo $data->status  ?? "SIM" ?>">SIM</option>
-        <option valuen="<?php echo $data->status  ?? "NÃO" ?>">NÂO</option>
+        
+        <option valuen="SIM">SIM</option>
+        <option valuen="NÃO">NÂO</option>
     </select>
     <br>
 
@@ -58,6 +59,7 @@
     <select name="categoria_id">
         <?php
         foreach($categorias as $categoria){
+            $selected = $categoria->id == $data->categoria_id ? "selected": "";
         echo "<option value='$categoria->id'>$categoria->nome</option>";
         } 
         ?>
@@ -65,9 +67,7 @@
     </select> <br>
 
     <label for="">Texto</label> <br>
-    <textarea name="texto" rows="4">
-        <?php echo $data->texto ?? "" ?>
-    </textarea> <br>
+    <textarea name="texto" rows="4"><?php echo $data->texto ?? "" ?></textarea> <br>
 
     <button type="submit">Salvar</button>
     <a href='./PostList.php'>Voltar</a><br>
