@@ -133,7 +133,7 @@ class db {
 
     }
 
-    public function find($table_name = null, $id){
+    public function find($table_name, $id){
 
         $table_name = !empty($table_name) ? $table_name : $this->table_name;
 
@@ -149,5 +149,31 @@ class db {
 
     }
 
+    public function login($dados){
+
+        $conn = $this->conn();
+
+        $sql = "SELECT * FROM $this->table_name WHERE login = ?";
+
+        $st = $conn->prepare($sql);
+
+        $st->execute([$dados['login']]);
+
+        $result = $st->fetchObject();
+
+        if(password_verify($dados['senha'],$result->senha)){
+            return $result;
+        } else {
+            return "error";
+        }
+    }
+    function checkLogin(){~
+        session_start();
+
+        if(empty($_SESSION['nome'])){
+            session_destroy();
+            header("Location: ../Login.php?error=Sessao Expirada!");
+        }
+    }
 
 }
